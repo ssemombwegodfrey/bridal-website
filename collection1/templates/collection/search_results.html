@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Results - Trussy Bridal Collection</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <style>
+    .results-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+    .result-card {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      background: #fff;
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+    .result-card:hover {
+      transform: scale(1.03);
+    }
+    .result-card img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+    .result-card h3 {
+      font-size: 1.2rem;
+      margin: 10px 0;
+      color: #333;
+    }
+    .result-card a {
+      display: inline-block;
+      margin-bottom: 15px;
+      text-decoration: none;
+      color: #d6336c;
+      font-weight: bold;
+    }
+    .no-results {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #666;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Search Results for "{{ query }}"</h1>
+
+  {% if gowns %}
+    <div class="results-container">
+      {% for gown in gowns %}
+        <div class="result-card">
+          <img src="{{ gown.image.url }}" alt="{{ gown.name }}">
+          <h3>{{ gown.name }}</h3>
+          <a href="{% url 'gown_detail' gown.id %}">View Details</a>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="no-results">No gowns or dresses found matching your search.</p>
+  {% endif %}
+
+</body>
+</html>
