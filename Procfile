@@ -1,2 +1,3 @@
-web: gunicorn collection.wsgi:application
+web: gunicorn collection.wsgi
+
 

@@ -14,21 +14,25 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-
 from django.urls import path
 from collection1 import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path('gowns/', views.gowns, name='gowns'),
+    path('gowns/', views.gowns, name='gowns'),   # 👈 put back the gowns list view
     path('party-dresses/', views.party_dresses, name='party_dresses'),
+    path('maids-dresses/', views.maids_dresses, name='maids_dresses'),
     path('wedding-videos/', views.wedding_videos, name='wedding_videos'),
-    path('maids_dresses/', views.maids_dresses, name='maids_dresses'),
     path('about_us/', views.about_us, name='about_us'),
     path('search/', views.search, name='search'),
 
-    # New: Gown detail page, expects integer id
+    # Detail views
     path('gowns/<int:gown_id>/', views.gown_detail, name='gown_detail'),
     path('gown/<int:gown_id>/<str:source>/', views.gown_detail, name='gown_detail_source'),
 ]
 
+# ✅ Serve media files in development
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

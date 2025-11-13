@@ -1,154 +1,29 @@
+{% extends 'collection/base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>{{ gown.name }} - Trussy Bridal Collection</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Roboto&display=swap" rel="stylesheet" />
-  <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      background-color: #fff;
-      color: #333;
-      padding: 20px;
-      max-width: 800px;
-      margin: auto;
-    }
+{% block title %}{{ gown.name }} - Trussy Bridal & Deco{% endblock %}
 
-    header {
-      background: linear-gradient(to right, #e91e63, #f06292);
-      padding: 20px;
-      text-align: center;
-      color: white;
-      border-radius: 10px;
-    }
+{% block content %}
 
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-    }
+<h2 style="text-align:center; margin:30px 0;">{{ gown.name }}</h2>
 
-    .gown-image {
-      margin-top: 30px;
-      text-align: center;
-    }
-
-    .gown-image img {
-      max-width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      display: inline-block;
-    }
-
-    .details {
-      margin-top: 25px;
-      font-size: 1rem;
-      color: #555;
-      line-height: 1.5;
-    }
-
-    .price {
-      margin-top: 15px;
-      font-size: 1.25rem;
-      font-weight: bold;
-      color: #e91e63;
-    }
-
-    .buttons {
-      margin-top: 30px;
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      background-color: #e91e63;
-      color: white;
-      border: none;
-      padding: 12px 24px;
-      font-size: 1rem;
-      font-weight: 600;
-      border-radius: 8px;
-      cursor: pointer;
-      text-decoration: none;
-      text-align: center;
-      transition: background-color 0.3s ease, transform 0.2s;
-      display: inline-block;
-    }
-
-    .btn:hover {
-      background-color: #ad1457;
-      transform: translateY(-2px);
-    }
-
-    .back-link {
-      display: inline-block;
-      margin-top: 20px;
-      text-decoration: none;
-      color: #e91e63;
-      font-weight: bold;
-      border: 2px solid #e91e63;
-      padding: 8px 16px;
-      border-radius: 8px;
-      transition: background-color 0.3s, color 0.3s, transform 0.2s;
-      text-align: center;
-      margin-right: 10px;
-    }
-
-    .back-link:hover {
-      background-color: #e91e63;
-      color: white;
-      transform: translateY(-2px);
-    }
-
-    .nav-links {
-      margin-top: 20px;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-  </style>
-</head>
-<body>
-
-<header>
-  <h1>{{ gown.name }}</h1>
-</header>
-
-<div class="gown-image">
-  <img src="{{ gown.image.url }}" alt="{{ gown.name }}" />
+<div style="text-align:center;">
+  <img src="{{ gown.image.url }}" alt="{{ gown.name }}" style="max-width:100%; border-radius:12px;">
 </div>
 
 {% if gown.description %}
-  <div class="details">{{ gown.description }}</div>
+  <p style="margin-top:20px; text-align:center;">{{ gown.description }}</p>
 {% endif %}
 
 {% if gown.price %}
-  <div class="price">Price: UGX {{ gown.price|floatformat:0 }}</div>
+  <p style="text-align:center; font-weight:bold; color:#e91e63;">Price: UGX {{ gown.price|floatformat:0 }}</p>
 {% endif %}
 
-<div class="buttons">
-  <a href="{% url 'maids_dresses' %}" class="btn">Maids Dresses</a>
-  <a href="#" class="btn">Add to Cart</a>
+<div style="text-align:center; margin-top:20px;">
+  <a href="{% url 'gowns' %}" style="padding:10px 20px; background:#e91e63; color:white; border-radius:5px; text-decoration:none;">← Back to Gowns</a>
+  <a href="{% url 'home' %}" style="padding:10px 20px; background:#e91e63; color:white; border-radius:5px; text-decoration:none;">← Back to Home</a>
 </div>
 
-<div class="nav-links">
-  {% if source == 'party' %}
-    <a href="{% url 'party_dresses' %}" class="back-link">← Back to Party Dresses</a>
-  {% elif source == 'maids' %}
-    <a href="{% url 'maids_dresses' %}" class="back-link">← Back to Maids Dresses</a>
-  {% else %}
-    <a href="{% url 'gowns' %}" class="back-link">← Back to Gowns</a>
-  {% endif %}
-  
-  <a href="{% url 'home' %}" class="back-link">← Back to Home</a>
-</div>
+{% endblock %}
 
-</body>
-</html>
 

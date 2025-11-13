@@ -1,189 +1,56 @@
+{% extends 'collection/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us - Trussy Bridal & Deco</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Roboto&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f7f5f2;
-      color: #333;
-    }
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      padding: 20px 0;
-      background-color: #fff;
-      margin: 0;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    nav ul li { margin: 0 15px; }
-    nav ul li a { text-decoration: none; color: #333; font-size: 1rem; transition: color 0.3s; }
-    nav ul li a:hover, nav ul li a.active { color: #d6336c; font-weight: bold; }
+{% block title %}About Us - Trussy Bridal & Deco{% endblock %}
+{% block body_class %}inner-page{% endblock %}
 
-    .hero {
-      background: url("{% static 'images/hero-bg.jpg' %}") center/cover no-repeat;
-      height: 300px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      text-align: center;
-      position: relative;
-    }
-    .hero::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.5);
-    }
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 3rem;
-      z-index: 1;
-      position: relative;
-    }
+{% block content %}
 
-    .about-container {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      padding: 60px 20px;
-      max-width: 1100px;
-      margin: auto;
-      gap: 40px;
-    }
-    .about-text { flex: 1; min-width: 300px; }
-    .about-text h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 20px; color: #d6336c; }
-    .about-text p { line-height: 1.6; font-size: 1.1rem; }
-    .about-image { flex: 1; min-width: 300px; }
-    .about-image img { width: 100%; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+<div class="about-container">
+  <div class="about-text">
+    <h2>Who We Are</h2>
+    <p>At <strong>Trussy Bridal & Deco</strong>, we believe every celebration deserves to shine with elegance. From stunning bridal gowns and party dresses to breathtaking event décor, we make your special moments unforgettable. Our team is passionate about creating timeless styles and transforming venues into magical experiences.</p>
 
-    .mission {
-      background: #fff;
-      padding: 60px 20px;
-      text-align: center;
-    }
-    .mission h2 { font-family: 'Playfair Display', serif; color: #d6336c; margin-bottom: 20px; }
-    .mission p { max-width: 800px; margin: auto; line-height: 1.6; font-size: 1.1rem; }
+    <!-- Contact & Social Section -->
+    <div class="contact-social">
+      <h3>Get in Touch</h3>
+      <p>We’d love to hear from you! Reach us directly through any of the channels below:</p>
 
-    /* Contact Section */
-    .contact-section {
-      background: #f7f5f2;
-      padding: 60px 20px;
-      text-align: center;
-    }
-    .contact-section h2 {
-      font-family: 'Playfair Display', serif;
-      color: #d6336c;
-      font-size: 2rem;
-      margin-bottom: 20px;
-    }
-    .contact-section p {
-      font-size: 1.1rem;
-      margin-bottom: 20px;
-    }
-    .contact-links {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 25px;
-      margin-top: 20px;
-    }
-    .contact-links a {
-      text-decoration: none;
-      color: white;
-      background-color: #d6336c;
-      padding: 12px 20px;
-      border-radius: 25px;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-    .contact-links a:hover {
-      background-color: #e91e63;
-    }
-
-    footer {
-      background: #fff;
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
-      border-top: 1px solid #ddd;
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Navigation -->
-  <nav>
-    <ul>
-      <li><a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">Home</a></li>
-      <li><a href="{% url 'gowns' %}" class="{% if request.resolver_match.url_name == 'gowns' %}active{% endif %}">Gowns</a></li>
-      <li><a href="{% url 'party_dresses' %}" class="{% if request.resolver_match.url_name == 'party_dresses' %}active{% endif %}">Party Dresses</a></li>
-      <li><a href="{% url 'about_us' %}" class="{% if request.resolver_match.url_name == 'about_us' %}active{% endif %}">About Us</a></li>
-      <li><a href="{% url 'maids_dresses' %}" class="{% if request.resolver_match.url_name == 'maids_dresses' %}active{% endif %}">Maids Dresses</a></li>
-    </ul>
-  </nav>
-
-  <!-- Hero Section -->
-  <section class="hero">
-    <h1>About Trussy Bridal & Deco</h1>
-  </section>
-
-  <!-- About Section -->
-  <section class="about-container">
-    <div class="about-text">
-      <h2>Who We Are</h2>
-      <p>
-        At <strong>Trussy Bridal & Deco</strong>, we believe every celebration deserves to shine with elegance.  
-        From stunning bridal gowns and party dresses to breathtaking event décor, we make your special moments unforgettable.  
-        Our team is passionate about creating timeless styles and transforming venues into magical experiences.
-      </p>
+      <div class="social-icons">
+        <!-- WhatsApp -->
+        <a href="https://wa.me/256785290456" target="_blank">
+          <img src="{% static 'images/icons/whatsapp.jpg' %}" alt="WhatsApp" title="Chat on WhatsApp">
+        </a>
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/trussybridalanddeco" target="_blank">
+          <img src="{% static 'images/icons/facebook.png' %}" alt="Facebook" title="Visit our Facebook">
+        </a>
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/trussybridalanddeco" target="_blank">
+          <img src="{% static 'images/icons/instagram.jpg' %}" alt="Instagram" title="Visit our Instagram">
+        </a>
+        <!-- Twitter -->
+        <a href="https://twitter.com/trussybridal" target="_blank">
+          <img src="{% static 'images/icons/twitter.png' %}" alt="Twitter" title="Follow us on Twitter">
+        </a>
+        <!-- Phone -->
+        <a href="tel:+256758186286">
+          <img src="{% static 'images/icons/phone.png' %}" alt="Call Us" title="Call Us">
+        </a>
+      </div>
     </div>
-    <div class="about-image">
-      <img src="{% static 'images/full-bg-gown.jpg' %}" alt="Bridal and Decoration">
-    </div>
-  </section>
+    <!-- End Contact & Social Section -->
 
-  <!-- Mission Section -->
-  <section class="mission">
-    <h2>Our Mission</h2>
-    <p>
-      To inspire confidence, beauty, and joy in every client we serve.  
-      We are dedicated to providing elegant gowns, professional decoration services,  
-      and a world-class shopping experience that celebrates life’s most precious occasions.
-    </p>
-  </section>
+  </div>
 
-  <!-- Contact Section -->
-  <section class="contact-section">
-    <h2>Contact & Connect with Us</h2>
-    <p>Reach out through any of the platforms below or directly via phone:</p>
-    <div class="contact-links">
-      <!-- WhatsApp/Call Numbers -->
-      <a href="https://wa.me/256758186286" target="_blank">WhatsApp: +256758186286</a>
-      <a href="https://wa.me/256785290456" target="_blank">WhatsApp: +256785290456</a>
+  <div class="about-image">
+    <img src="{% static 'images/full-bg-gown.jpg' %}" alt="Bridal and Decoration">
+  </div>
+</div>
 
-      <!-- Social Media Links -->
-      <a href="https://instagram.com/yourprofile" target="_blank">Instagram</a>
-      <a href="https://facebook.com/yourpage" target="_blank">Facebook</a>
-      <a href="https://www.tiktok.com/@yourprofile" target="_blank">TikTok</a>
-    </div>
-  </section>
+<div class="mission">
+  <h2>Our Mission</h2>
+  <p>To inspire confidence, beauty, and joy in every client we serve. We are dedicated to providing elegant gowns, professional decoration services, and a world-class shopping experience that celebrates life’s most precious occasions.</p>
+</div>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Trussy Bridal & Deco. All Rights Reserved.</p>
-  </footer>
-
-</body>
-</html>
+{% endblock %}

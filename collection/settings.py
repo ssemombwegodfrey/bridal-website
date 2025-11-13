@@ -9,10 +9,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-mlt*ju+hiphlm-=61(z5kc3e!z^41_@fe!^qct6_a#+d1bed$3'
 
-DEBUG = True
+DEBUG = True  # Set False for production
 
-# Allow all hosts for now (you can replace * with your Render domain later)
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["*"]  # Or set your render domain: ["your-app.onrender.com"]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -32,19 +31,19 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # WhiteNoise for static files on Render
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
-# Make sure this points to your project urls.py (check your folder structure)
 ROOT_URLCONF = 'collection.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / "templates"],  # safe to include, even if empty
+        'DIRS': [BASE_DIR / 'collection1' / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
-                'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
@@ -70,15 +69,21 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
 USE_TZ = True
 
-# Static files (CSS, JS, images)
+# Static files
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# Include both static folders
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',                     # main static folder
+    BASE_DIR / 'collection1' / 'static'     # folder with your home page background
+]
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Media files
 MEDIA_URL = '/media/'

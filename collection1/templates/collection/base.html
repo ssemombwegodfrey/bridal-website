@@ -4,77 +4,65 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}Trussy Bridal Collection{% endblock %}</title>
+  <title>{% block title %}Trussy Bridal & Deco{% endblock %}</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Roboto&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-  <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #fff;
-      color: #333;
-    }
-
-    /* Navigation */
-    nav ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      padding: 20px 0;
-      background-color: #fff;
-      margin: 0;
-    }
-    nav ul li {
-      margin: 0 15px;
-    }
-    nav ul li a {
-      text-decoration: none;
-      color: #333;
-      font-size: 1rem;
-      transition: color 0.3s;
-    }
-    nav ul li a:hover {
-      color: #e91e63;
-    }
-    nav ul li a.active {
-      color: #e91e63;
-      font-weight: bold;
-      border-bottom: 2px solid #e91e63;
-    }
-
-    /* Footer */
-    footer {
-      background: #e91e63;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-    }
-  </style>
 </head>
-<body>
+<body class="{% block body_class %}{% endblock %}">
 
-<!-- Navigation -->
-<nav>
-  <ul>
-    <li><a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">Home</a></li>
-    <li><a href="{% url 'gowns' %}" class="{% if request.resolver_match.url_name == 'gowns' %}active{% endif %}">Gown</a></li>
-    <li><a href="{% url 'party_dresses' %}" class="{% if request.resolver_match.url_name == 'party_dresses' %}active{% endif %}">Party Dress</a></li>
-    <li><a href="{% url 'about_us' %}" class="{% if request.resolver_match.url_name == 'about_us' %}active{% endif %}">About Us</a></li>
-    <li><a href="{% url 'maids_dresses' %}" class="{% if request.resolver_match.url_name == 'maids_dresses' %}active{% endif %}">Maids Dresses</a></li>
-  </ul>
-</nav>
+  <!-- Logo / Header -->
+  <div class="top-bar">
+    <header>
+      <div class="logo-container">
+        <a href="{% url 'home' %}">
+          <img src="{% static 'images/logo.jpeg' %}" alt="Trussy Bridal Logo" style="height:150px; width:auto;">
 
-<!-- Page Content -->
-<main>
-  {% block content %}{% endblock %}
-</main>
+        </a>
+        <div class="site-title">
+          <h1>Elegance for Every Occasion</h1>
+        </div>
+      </div>
 
-<!-- Footer -->
-<footer>
-  <p>&copy; 2025 Trussy Bridal Collection. All Rights Reserved.</p>
-</footer>
+      <!-- Navigation -->
+      <nav>
+        <ul>
+          <li><a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">Home</a></li>
+          <li><a href="{% url 'gowns' %}" class="{% if request.resolver_match.url_name == 'gowns' %}active{% endif %}">Gowns</a></li>
+          <li><a href="{% url 'party_dresses' %}" class="{% if request.resolver_match.url_name == 'party_dresses' %}active{% endif %}">Party Dresses</a></li>
+          <li><a href="{% url 'maids_dresses' %}" class="{% if request.resolver_match.url_name == 'maids_dresses' %}active{% endif %}">Maids Dresses</a></li>
+          <li><a href="{% url 'about_us' %}" class="{% if request.resolver_match.url_name == 'about_us' %}active{% endif %}">About Us</a></li>
+        </ul>
+      </nav>
+    </header>
+  </div>
+
+  <!-- Page-specific content -->
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Trussy Bridal & Deco. All Rights Reserved.</p>
+  </footer>
+
+<script>
+  window.addEventListener("scroll", function() {
+    const header = document.querySelector("header");
+    if (window.scrollY > 50) {
+      header.classList.add("scrolled");
+    } else {
+      header.classList.remove("scrolled");
+    }
+  });
+</script>
+
+
+<!-- Floating WhatsApp Button -->
+<a href="https://wa.me/256781752192" target="_blank" class="whatsapp-float">
+  <img src="{% static 'images/icons/whatsapp.png' %}" alt="WhatsApp Chat">
+</a>
 
 </body>
 </html>
