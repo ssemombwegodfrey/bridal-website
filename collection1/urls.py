@@ -31,6 +31,16 @@ urlpatterns = [
     # Detail views
     path('gowns/<int:gown_id>/', views.gown_detail, name='gown_detail'),
     path('gown/<int:gown_id>/<str:source>/', views.gown_detail, name='gown_detail_source'),
+    
+  # Add these for new categories
+    path('casual/', views.casual, name='casual'),
+    path('shoes/', views.shoes, name='shoes'),
+    path('bags/', views.bags, name='bags'),
+    path('lingeries/', views.lingeries, name='lingeries'),
+    path('jewelry/', views.jewelry, name='jewelry'),  
+     path('traditional/', views.traditional_clothes, name='traditional_clothes'),
+
+    
 ]
 
 # ✅ Serve media files in development

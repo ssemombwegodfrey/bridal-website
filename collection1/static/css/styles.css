@@ -697,3 +697,103 @@ nav ul li a.active {
     font-size: 2rem;
   }
 }
+
+
+/* ================================
+   Categories Section
+================================ */
+.categories-section {
+  padding: 40px 20px;
+  background: #f9f9f9;
+}
+
+.categories-section h3 {
+  font-family: 'Playfair Display', serif;
+  color: #e91e63;
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.categories-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+.category-item {
+  width: 150px;
+  text-align: center;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.category-item img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.category-item p {
+  margin-top: 10px;
+  font-weight: 600;
+  color: #333;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+/* Hover Effects */
+.category-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.category-item:hover img {
+  transform: scale(1.05);
+}
+
+.category-item:hover p {
+  color: #e91e63;
+}
+
+/* ================================
+   Responsive Categories for mobile
+================================ */
+@media (max-width: 768px) {
+  .categories-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .category-item {
+    width: 45%; /* two cards per row */
+    height: auto;
+  }
+
+  .category-item img {
+    height: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .category-item {
+    width: 90%; /* one card per row */
+    margin: 0 auto;
+  }
+
+  .category-item img {
+    height: 100px;
+  }
+
+  .category-item p {
+    font-size: 0.9rem;
+  }
+}

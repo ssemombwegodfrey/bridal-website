@@ -74,3 +74,24 @@ def gown_detail(request, gown_id, source=None):
         'gown': gown,
         'source': source,  # will be 'party', 'maids', or None for collection gowns
     })
+
+
+# ---------------- NEW CATEGORIES ----------------
+def casual(request):
+    # Placeholder page for casual clothing
+    return render(request, 'collection/casual.html')
+
+def shoes(request):
+    return render(request, 'collection/shoes.html')
+
+def bags(request):
+    return render(request, 'collection/bags.html')
+
+def lingeries(request):
+    return render(request, 'collection/lingeries.html')
+
+def jewelry(request):
+    return render(request, 'collection/jewelry.html')
+
+def traditional_clothes(request):
+    return render(request, 'collection/traditional_clothes.html')

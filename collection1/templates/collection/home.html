@@ -6,10 +6,12 @@
 
 {% block content %}
 
+<!-- Hero Section -->
 <section class="hero" style="background-image: url('{% static 'images/full-bg-gown.jpg' %}');">
   <h2>Discover Timeless Elegance With Trassy</h2>
 </section>
 
+<!-- Search Bar -->
 <div class="search-bar">
   <form method="get" action="{% url 'search' %}">
     <input type="text" name="q" placeholder="Search gowns, dresses, Maids Dresses or videos..." required>
@@ -17,9 +19,54 @@
   </form>
 </div>
 
+<!-- Shop Now Section -->
 <div style="text-align:center; margin:30px 0;">
-  <p>Bridal gowns and party dresses for every unforgettable occasion.</p>
+  <p>Trussyfashions dealing in bridal gowns, party dresses, casual clothings, shoes, bags, lingeries and jewelry for ladies.</p>
   <a href="{% url 'gowns' %}" class="btn">Shop Now</a>
 </div>
 
+<!-- Categories Section -->
+<div class="categories-section">
+  <h3 style="text-align:center; margin-bottom:20px;">Shop by Category</h3>
+  <div class="categories-container">
+    <div class="category-item">
+      <a href="{% url 'casual' %}">
+        <img src="{% static 'images/categories/casual.jpeg' %}" alt="Casual Clothing">
+        <p>Casual Clothing</p>
+      </a>
+    </div>
+    <div class="category-item">
+      <a href="{% url 'shoes' %}">
+        <img src="{% static 'images/categories/shoes.jpeg' %}" alt="Shoes">
+        <p>Shoes</p>
+      </a>
+    </div>
+    <div class="category-item">
+      <a href="{% url 'bags' %}">
+        <img src="{% static 'images/categories/bags.jpeg' %}" alt="Bags">
+        <p>Bags</p>
+      </a>
+    </div>
+    <div class="category-item">
+      <a href="{% url 'lingeries' %}">
+        <img src="{% static 'images/categories/lingeries.jpeg' %}" alt="Lingeries">
+        <p>Lingeries</p>
+      </a>
+    </div>
+    <div class="category-item">
+      <a href="{% url 'traditional_clothes' %}">
+        <img src="{% static 'images/categories/traditional_clothes.jpg' %}" alt="Traditional Clothes">
+        <p>Traditional Clothes</p>
+      </a>
+    </div>
+    <div class="category-item">
+      <a href="{% url 'jewelry' %}">
+        <img src="{% static 'images/categories/jewelry.jpg' %}" alt="Jewelry">
+        <p>Jewelry</p>
+      </a>
+    </div>
+  </div>
+</div>
+
 {% endblock %}
+
